@@ -3,7 +3,6 @@ public:
 
     int f(int i, int j, string &s, map<string, int> &exist, vector<vector<int>> &dp)
     {
-        // cout<<i<<" "<<j<<endl;
         if(j>=s.size())
         return 0;
         if(i>j)
@@ -15,7 +14,6 @@ public:
         int n=s.size();
         string t = s.substr(i, j-i+1);
         int mx=f(i+1, j+1, s, exist, dp);
-        // cout<<t<<endl;
         if(exist[t])
         {
             mx=max(mx, j-i+1 + f(j+1, j+1, s, exist, dp));
@@ -23,11 +21,9 @@ public:
         for(int k=j+1;k<n;k++)
         {
           t+=s[k];
-        //   cout<<t<<" ";
           if(exist[t])
           mx=max(mx,k-i+1+f(k+1, k+1, s, exist, dp));
         }
-        // cout<<endl;
         return dp[i][j]=mx;
     }
 
