@@ -14,10 +14,9 @@ public:
     bool isHappy(int n) {
         queue<int> q;
         unordered_map<int, int> hash;
-        q.push(n);
-        while (!q.empty()) {
-            int num = q.front();
-            q.pop();
+        int tt = n;
+        while (true) {
+            int num = tt;
             int sm = findSm(num);
             if (sm == 1)
                 return true;
@@ -25,7 +24,7 @@ public:
                 return false;
             } else {
                 hash[sm] = 1;
-                q.push(sm);
+                tt=sm;
             }
         }
         return false;
