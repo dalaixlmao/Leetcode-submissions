@@ -1,4 +1,4 @@
-# Write your MySQL query statement below
+-- Write your PostgreSQL query statement below
 select name, bonus
 from Employee as e
 left join bonus as b
