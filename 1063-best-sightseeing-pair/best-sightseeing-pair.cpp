@@ -11,9 +11,8 @@ public:
         int m = INT_MIN;
         for (int i = 0; i < n; i++) {
             if (i != 0)
-                m = max(m, a[n - i - 1] + mx);
-            mx = max(mx, b[n - i - 1]);
-            cout<<m<<endl;
+                m = max(m, values[n - i - 1] + n - i - 1 + mx);
+            mx = max(mx, values[n - i - 1] - (n - i - 1));
         }
         return m;
     }
