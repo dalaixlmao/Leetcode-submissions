@@ -9,11 +9,9 @@ public:
             if (a[i] != 'a') {
                 a[i] = 'a';
                 flag = 1;
-                break;
+                return a;
             }
         }
-        if (flag)
-            return a;
         a[n - 1] = 'b';
         return a;
     }
