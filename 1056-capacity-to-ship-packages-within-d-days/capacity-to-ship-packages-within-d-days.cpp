@@ -11,7 +11,6 @@ public:
                 d--;
             }
         }
-        // cout<<m<<" "<<d<<endl;
         return d > 0;
     }
 
