@@ -2,17 +2,39 @@ class Solution {
 public:
     int candy(vector<int>& r) {
         int n = r.size();
-        vector<int> sf(n, 0), pf(n, 0);
-        pf[0] = 1;
-        sf[n - 1] = 1;
-        for (int i = 1; i < n; i++) {
-            if (r[i] > r[i - 1]) pf[i] = pf[i - 1] + 1;
-            else pf[i] = 1;
-            if (r[n - i - 1] > r[n - i]) sf[n - i - 1] = sf[n - i] + 1;
-            else sf[n - i - 1] = 1;
+        int sm = 1;
+
+        int i = 1;
+        int peak = 1;
+        while (i < n) {
+
+            if (r[i - 1] == r[i]) {
+                i++;
+                sm++;
+                peak = 1;
+                continue;
+            }
+
+            while (i < n && r[i - 1] < r[i]) {
+                peak++;
+                i++;
+                sm += peak;
+            }
+
+            int down = 0;
+            while (i < n && r[i - 1] > r[i]) {
+                down++;
+                i++;
+                sm += down;
+            }
+
+            if (down + 1 > peak) {
+                sm += down - peak + 1;
+                peak = 1;
+            }
+            if(down>0)
+            peak=1;
         }
-        int s = 0;
-        for (int i = 0; i < n; i++) s += max(pf[i], sf[i]);
-        return s;
+        return sm;
     }
 };
