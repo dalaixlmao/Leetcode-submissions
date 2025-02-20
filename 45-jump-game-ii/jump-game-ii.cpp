@@ -1,22 +1,22 @@
 class Solution {
 public:
     int jump(vector<int>& a) {
+        if(a.size()==1)
+        return 0;
         int n = a.size();
-        if (n == 1)
-            return 0;
+        int jump = 0;
         int l = 0, r = 0;
-        int jumps = 0;
-        while (r < n-1) {
-            int mx = 0;
+        while (r < n) {
+            int mx = r + 1;
             for (int i = l; i <= r; i++) {
                 mx = max(mx, a[i] + i);
             }
             l = r + 1;
             r = mx;
-            // cout<<l<<" "<<r<<endl;
-            if (l < n)
-                jumps++;
+            jump++;
+            if(r == n-1)
+            return jump;
         }
-        return jumps;
+        return jump;
     }
 };
